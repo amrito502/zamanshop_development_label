@@ -19,6 +19,52 @@ class AuthController extends Controller
         $this->twilioService = $twilioService;
     }
 
+    // ============sign_in function=========== //
+    public function login(){
+        if (Auth::check()) {
+            $user = Auth::user();
+
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard');
+            } elseif ($user->role === 'seller') {
+                return redirect()->route('seller.dashboard');
+            } else {
+                return redirect()->route('customer.dashboard');
+            }
+        }
+        return view('authentication.login');
+    }
+
+    public function login_store(Request $request){
+        $request->validate([
+            'login' => 'required', // Can be email or phone
+            'password' => 'required|min:2',
+        ]);
+
+        $loginType = filter_var($request->login, FILTER_VALIDATE_EMAIL) ? 'email' : 'phone';
+
+        $credentials = [
+            $loginType => $request->login,
+            'password' => $request->password,
+        ];
+
+        if (Auth::attempt($credentials)) {
+            $user = Auth::user();
+
+            // Redirect based on role
+            if ($user->role === 'admin') {
+                return redirect()->route('admin.dashboard')->with('success', 'Welcome Admin!');
+            } elseif ($user->role === 'seller') {
+                return redirect()->route('seller.dashboard')->with('success', 'Welcome Seller!');
+            } else {
+                return redirect()->route('customer.dashboard')->with('success', 'Welcome Customer!');
+            }
+        }
+
+        return back()->withErrors(['login' => 'Invalid credentials'])->withInput();
+    }
+
+
     // ============sign_up function=========== //
     public function sign_up()
     {

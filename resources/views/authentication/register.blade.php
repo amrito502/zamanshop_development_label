@@ -1,29 +1,5 @@
 @extends('customer.master')
 @section('customer')
-{{-- <div class="container">
-    <h2>Register</h2>
-    @if(session('error')) <p style="color: red;">{{ session('error') }}</p> @endif
-    <form method="POST" action="{{ route('store.sign_up') }}">
-        @csrf
-        <input type="text" name="name" placeholder="Name" required><br>
-        <input type="email" name="email" placeholder="Email" required><br>
-        <input type="text" name="phone" placeholder="Phone Number" required><br>
-        <input type="password" name="password" placeholder="Password" required><br>
-        <input type="password" name="password_confirmation" placeholder="Confirm Password" required><br>
-        <button type="submit">Register</button>
-    </form>
-</div>
- --}}
-
-
-
-
-
-
-
-
-
-
 <div class="rts-register-area rts-section-gap bg_light-1">
     <div class="container">
         <div class="row">
@@ -44,8 +20,8 @@
                             <input type="email" name="email" placeholder="Email" id="email">
                         </div>
                         <div class="input-wrapper">
-                            <label for="email">Phone*</label>
-                            <input type="email" name="phone" placeholder="Phone" id="email">
+                            <label for="Phone">Phone*</label>
+                            <input type="text" name="phone" placeholder="Phone" id="Phone">
                         </div>
                         <div class="input-wrapper">
                             <label for="password">Password*</label>
@@ -68,7 +44,7 @@
                                     <img src="assets/images/form/facebook.svg" alt="login">
                                 </a>
                             </div>
-                            <p>Already Have Account? <a href="#">Login</a></p>
+                            <p>Already Have Account? <a href="{{ route('login') }}">Login</a></p>
                         </div>
                     </form>
                 </div>

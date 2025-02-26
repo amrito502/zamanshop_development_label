@@ -24,6 +24,9 @@ Route::post('/store-sign-up', [AuthController::class, 'store_sign_up'])->name('s
 Route::get('/verify-phone', [AuthController::class, 'verify_phone'])->name('verify.phone');
 Route::post('/verify-phone-store', [AuthController::class, 'verify_phone_store'])->name('verify.phone.store');
 Route::post('/resend-otp', [AuthController::class, 'resend_otp'])->name('otp.resend');
+// ========login========
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/login-store', [AuthController::class, 'login_store'])->name('login.store');
 // ===========End-Auth-routes==============================
 
 
