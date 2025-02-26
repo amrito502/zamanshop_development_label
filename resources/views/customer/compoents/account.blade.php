@@ -47,11 +47,11 @@
                             <h2 class="title">Hello <span
                                     style="text-transform: capitalize">{{ auth()->user()->name }}</span>!
                                 <a href="">
-                                    {{-- @if(auth()->user()->role === 'customer')
+                                    @if(auth()->user()->role === 'customer')
                                         <a href="{{ route('seller.request.create') }}"
                                             style="border: 1px solid green;padding: 8px 14px;font-size: 18px;border-radius: 4px;margin-left: 30px;">Become
                                             a seller</a>
-                                    @endif --}}
+                                    @endif
                                 </a>
                             </h2>
                             <p class="disc">

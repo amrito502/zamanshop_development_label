@@ -59,4 +59,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'otp_expires_at' => 'datetime',
     ];
+
+    public function sellerRequest()
+    {
+        return $this->hasOne(SellerRequest::class);
+    }
 }

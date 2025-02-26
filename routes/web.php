@@ -1,11 +1,14 @@
 <?php
 
-use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\Customer\CustomerController;
-use App\Http\Controllers\Customer\CustomerDashboardController;
-use App\Http\Controllers\Seller\SellerDashboardController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\SellerRequestController;
+use App\Http\Controllers\Customer\CustomerController;
+use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Seller\SellerDashboardController;
+use App\Http\Controllers\Customer\CustomerDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,6 +36,9 @@ Route::post('/login-store', [AuthController::class, 'login_store'])->name('login
 Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
     Route::middleware('customer')->group(function () {
         Route::get('/customer/dashboard', [CustomerDashboardController::class, 'customerDashboard'])->name('customer.dashboard');
+
+        Route::get('/seller/request', [SellerRequestController::class, 'create'])->name('seller.request.create');
+        Route::post('/seller/request', [SellerRequestController::class, 'store'])->name('seller.request.store');
     });
 
     Route::middleware('seller')->group(function () {
@@ -41,6 +47,17 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
 
     Route::middleware('admin')->group(function () {
         Route::get('/admin/dashboard', [AdminDashboardController::class, 'adminDashboard'])->name('admin.dashboard');
+        // =====seller-requests=====
+        Route::get('/admin/seller-requests', [SellerRequestController::class, 'index'])->name('admin.seller.requests');
+        Route::post('/admin/seller-requests/{id}/approve', [SellerRequestController::class, 'approve'])->name('admin.seller.requests.approve');
+        Route::post('/admin/seller-requests/{id}/reject', [SellerRequestController::class, 'reject'])->name('admin.seller.requests.reject');
+        // =========users-status=====
+        Route::get('/admin/users', [AdminController::class, 'users'])->name('admin.users');
+        Route::post('/admin/users/{id}/block', [AdminController::class, 'blockUser'])->name('admin.users.block');
+        Route::post('/admin/users/{id}/unblock', [AdminController::class, 'unblockUser'])->name('admin.users.unblock');
+
+        // =========Category-routes=====
+        Route::resource('categories', CategoryController::class);
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
