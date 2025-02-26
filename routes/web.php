@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
@@ -58,6 +59,7 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
 
         // =========Category-routes=====
         Route::resource('categories', CategoryController::class);
+        Route::resource('subcategories', SubCategoryController::class);
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

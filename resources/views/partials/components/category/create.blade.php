@@ -24,7 +24,7 @@
                               <div class="mb-5"><h2 class="mb-0 fs-exact-18">Category information</h2></div>
                               <div class="mb-4">
                                   <label for="name" class="form-label">Name</label>
-                                  <input type="text" name="name" class="form-control" required id="name" value="Category Name" />
+                                  <input type="text" name="name" class="form-control" required id="name" />
                               </div>
                               <div class="mb-4">
                                 <label for="name" class="form-label">Choose Image</label>
