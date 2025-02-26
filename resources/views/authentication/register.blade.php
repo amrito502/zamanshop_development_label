@@ -1,25 +1,79 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-  </head>
-  <body>
+@extends('customer.master')
+@section('customer')
+{{-- <div class="container">
+    <h2>Register</h2>
+    @if(session('error')) <p style="color: red;">{{ session('error') }}</p> @endif
+    <form method="POST" action="{{ route('store.sign_up') }}">
+        @csrf
+        <input type="text" name="name" placeholder="Name" required><br>
+        <input type="email" name="email" placeholder="Email" required><br>
+        <input type="text" name="phone" placeholder="Phone Number" required><br>
+        <input type="password" name="password" placeholder="Password" required><br>
+        <input type="password" name="password_confirmation" placeholder="Confirm Password" required><br>
+        <button type="submit">Register</button>
+    </form>
+</div>
+ --}}
+
+
+
+
+
+
+
+
+
+
+<div class="rts-register-area rts-section-gap bg_light-1">
     <div class="container">
-        <h2>Register</h2>
-        @if(session('error')) <p style="color: red;">{{ session('error') }}</p> @endif
-        <form method="POST" action="{{ route('store.sign_up') }}">
-            @csrf
-            <input type="text" name="name" placeholder="Name" required><br>
-            <input type="email" name="email" placeholder="Email" required><br>
-            <input type="text" name="phone" placeholder="Phone Number" required><br>
-            <input type="password" name="password" placeholder="Password" required><br>
-            <input type="password" name="password_confirmation" placeholder="Confirm Password" required><br>
-            <button type="submit">Register</button>
-        </form>
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="registration-wrapper-1">
+                    <div class="logo-area mb--0">
+                        <img class="mb--10" src="assets/images/logo/fav.png" alt="logo">
+                    </div>
+                    <h3 class="title">Register Into Your Account</h3>
+                    <form method="POST" action="{{ route('store.sign_up') }}" class="registration-form">
+                        @csrf
+                        <div class="input-wrapper">
+                            <label for="name">Full Name*</label>
+                            <input type="text" name="name" id="name" placeholder="Name">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="email">Email*</label>
+                            <input type="email" name="email" placeholder="Email" id="email">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="email">Phone*</label>
+                            <input type="email" name="phone" placeholder="Phone" id="email">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="password">Password*</label>
+                            <input type="password" name="password" placeholder="Password" id="password">
+                        </div>
+                        <div class="input-wrapper">
+                            <label for="password_confirmation">Confirmation Password*</label>
+                            <input type="password" name="password_confirmation" placeholder="Confirm Password" id="password_confirmation">
+                        </div>
+                        <button type="submit" class="rts-btn btn-primary">Register Account</button>
+                        <div class="another-way-to-registration">
+                            <div class="registradion-top-text">
+                                <span>Or Register With</span>
+                            </div>
+                            <div class="login-with-brand">
+                                <a href="#" class="single">
+                                    <img src="assets/images/form/google.svg" alt="login">
+                                </a>
+                                <a href="#" class="single">
+                                    <img src="assets/images/form/facebook.svg" alt="login">
+                                </a>
+                            </div>
+                            <p>Already Have Account? <a href="#">Login</a></p>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  </body>
-</html>
+</div>
+@endsection

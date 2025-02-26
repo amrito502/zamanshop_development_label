@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use Illuminate\Support\Facades\Route;
@@ -16,10 +17,6 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
-});
 
 // ===========Start-Auth-routes==============================
 Route::get('/sign-up', [AuthController::class, 'sign_up'])->name('sign_up');
@@ -45,3 +42,10 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 });
+
+
+
+//===========without-login-route-start====================//
+Route::get('/', [CustomerController::class,'index'])->name('index');
+
+//===========without-login-route-end====================//
