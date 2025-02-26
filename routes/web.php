@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\SubCategoryController;
@@ -60,6 +61,7 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
         // =========Category-routes=====
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
+        Route::resource('brands', BrandController::class);
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

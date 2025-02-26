@@ -1,35 +1,78 @@
 @extends('admin.master')
 
 @section('admin')
-<div class="container">
-    <h1>Edit Brand</h1>
+    <div class="container">
 
-    <form action="{{ route('brands.update', $brand->id) }}" method="POST" enctype="multipart/form-data">
-        @csrf
-        @method('PUT')
-
-        <div class="form-group">
-            <label for="brandName">Brand Name</label>
-            <input type="text" name="brandName" class="form-control" value="{{ old('brandName', $brand->brandName) }}" required>
+        <div class="py-5">
+            <div class="row g-4 align-items-center">
+                <div class="col">
+                    <nav class="mb-2" aria-label="breadcrumb">
+                    <h1 class="h3 m-0">Edit brand</h1>
+                </div>
+            </div>
         </div>
 
-        <div class="form-group">
-            <label for="brandImg">Brand Image (optional)</label>
-            <input type="file" name="brandImg" class="form-control">
-            @if($brand->brandImg)
-                <img src="{{ asset($brand->brandImg) }}" width="50" height="50" alt="Brand Image">
-            @endif
-        </div>
 
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select name="status" class="form-control" required>
-                <option value="active" {{ old('status', $brand->status) == 'active' ? 'selected' : '' }}>Active</option>
-                <option value="inactive" {{ old('status', $brand->status) == 'inactive' ? 'selected' : '' }}>Inactive</option>
-            </select>
-        </div>
 
-        <button type="submit" class="btn btn-primary">Update Brand</button>
-    </form>
-</div>
+        <div class="row g-4 align-items-center">
+            <form action="{{ route('brands.update', $brand->id) }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                @method('PUT')
+                <div class="row">
+                    <div class="col-xl-6">
+                        <div class="card">
+                          <div class="card-body p-5">
+                              <div class="mb-5"><h2 class="mb-0 fs-exact-18">brands information</h2></div>
+                              <div class="mb-4">
+                                  <label for="name" class="form-label">Name</label>
+                                  <input type="text" name="name" class="form-control" value="{{ $brand->name }}" required id="name" value="Category Name" />
+                              </div>
+                              <div class="mb-4">
+                                <label for="name" class="form-label">Choose Image</label>
+                                <input type="file" name="image" class="form-control"  id="name" />
+                                @if($brand->image)
+                                    <img src="{{ asset($brand->image) }}" alt="Image" style="width: 150px;height:100px; margin-top: 10px;">
+                                @endif
+                            </div>
+                              <div class="mb-4">
+                                  <label for="status" class="form-label">Status</label>
+                                  <select name="status" class="form-control">
+                                    <option value="active" {{ $brand->status == 'active' ? 'selected' : '' }}>Active</option>
+                                    <option value="inactive" {{ $brand->status == 'inactive' ? 'selected' : '' }}>Inactive</option>
+                                  </select>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-6">
+                          <div class="card">
+                              <div class="card-body p-5">
+                                  <div class="mb-5">
+                                      <h2 class="mb-0 fs-exact-18">Search engine optimization</h2>
+                                  </div>
+                                  <div class="mb-4">
+                                      <label for="meta_title" class="form-label">Page title</label>
+                                      <input type="text" name="meta_title" value="{{ $brand->meta_title }}" class="form-control" id="meta_title" />
+                                  </div>
+                                  <div>
+                                      <label for="meta_description" class="form-label">Meta description</label>
+                                      <textarea id="meta_description"  name="meta_description" class="form-control" rows="2">{{ $brand->meta_description }}</textarea>
+                                  </div>
+                                  <div>
+                                    <label for="meta_keyword" class="form-label">Meta Keyword</label>
+                                    <textarea id="meta_keyword" name="meta_keyword" class="form-control" rows="2">{{ $brand->meta_keyword }}</textarea>
+                                </div>
+                              </div>
+                          </div>
+                      </div>
+                </div>
+               <div class="row">
+                <div class="col-xl-12 mt-3">
+                    <button type="submit" class="btn btn-primary">Update</button>
+                    <a href="{{ route('brands.index') }}" class="btn btn-secondary ml-2">Cancel</a>
+                </div>
+               </div>
+            </form>
+        </div>
+    </div>
 @endsection
