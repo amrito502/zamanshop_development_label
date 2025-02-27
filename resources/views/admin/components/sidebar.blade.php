@@ -71,15 +71,15 @@
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item">
-                                    <a href="{{ url('/products') }}" class="sa-nav__link">
+                                    <a href="{{ url('/sections') }}" class="sa-nav__link">
                                         <span class="sa-nav__menu-item-padding"></span>
-                                        <span class="sa-nav__title">Products List</span>
+                                        <span class="sa-nav__title">Section List</span>
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item">
-                                    <a href="" class="sa-nav__link">
+                                    <a href="{{ url('products') }}" class="sa-nav__link">
                                         <span class="sa-nav__menu-item-padding"></span>
-                                        <span class="sa-nav__title">Product Details List</span>
+                                        <span class="sa-nav__title">Product List</span>
                                     </a>
                                 </li>
                                 <li class="sa-nav__menu-item">

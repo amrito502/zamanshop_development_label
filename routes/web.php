@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BrandController;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +64,10 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('subcategories', SubCategoryController::class);
         Route::resource('brands', BrandController::class);
+        Route::resource('sections', SectionController::class);
+        Route::resource('products', ProductController::class);
+        Route::get('/get-subdistricts', [ProductController::class, 'getSubDistricts'])->name('get.subdistricts');
+        Route::get('/get-subcategories', [ProductController::class, 'getSubCategories'])->name('get.subcategories');
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');

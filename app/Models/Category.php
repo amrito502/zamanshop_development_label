@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\SubCategory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Category extends Model
 {
@@ -18,4 +19,12 @@ class Category extends Model
         'meta_description',
         'meta_keyword',
     ];
+
+
+    // public function subCategories()
+    // {
+    //     return $this->hasMany(SubCategory::class, 'category_id')
+    //         ->where('status', 1);
+    // }
 }
+
