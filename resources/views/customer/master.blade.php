@@ -25,6 +25,7 @@
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script defer src="{{ asset('assets/js/plugins.js') }}"></script>
     <script defer src="{{ asset('assets/js/main.js') }}"></script>
+    @yield('scripts')
 </body>
 
 </html>

@@ -57,12 +57,12 @@
                                     <div class="button-wrapper-action">
                                         <form action="{{ route('cart.decrease',['rowId'=>$item->rowId]) }}" method="POST">
                                             @csrf
-                                            <button class="button"><i class="fa-regular fa-chevron-down"></i></button>
+                                            <button class="button cart_qty_decrease"><i class="fa-regular fa-chevron-down"></i></button>
                                         </form>
                                         
                                         <form action="{{ route('cart.increase',['rowId'=>$item->rowId]) }}" method="POST">
                                             @csrf
-                                            <button class="button plus">+<i class="fa-regular fa-chevron-up"></i></button>
+                                            <button class="button cart_qty_increase plus">+<i class="fa-regular fa-chevron-up"></i></button>
                                         </form>
                                     </div>
                                 </div>
@@ -150,5 +150,19 @@
         </div>
     </div>
 </div>
+
+@endsection
+
+@section('scripts')
+
+  <script>
+    $(".cart_qty_decrease").on("click",function(){
+        $(this).closest('form').submit();
+    });
+
+    $(".cart_qty_increase").on("click",function(){
+        $(this).closest('form').submit();
+    });
+  </script>
 
 @endsection
