@@ -85,4 +85,6 @@ Route::post('/cart/add', [CartController::class,'add_to_cart'])->name('cart.add'
 
 Route::post('/cart/increase/{rowId}', [CartController::class,'increase_cart_quantity'])->name('cart.increase');
 Route::post('/cart/decrease/{rowId}', [CartController::class,'decrease_cart_quantity'])->name('cart.decrease');
+Route::delete('/cart/remove/{rowId}', [CartController::class,'remove_cart_item'])->name('cart.remove');
+Route::delete('/cart/destroy', [CartController::class,'destroy_cart'])->name('cart.destroy');
 //===========without-login-route-end====================//

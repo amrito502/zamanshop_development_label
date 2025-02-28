@@ -57,7 +57,7 @@
                                                     @else
                                                     <form action="{{ route('cart.add') }}" class="rts-btn btn-primary radious-sm with-icon" method="post">
                                                         @csrf
-                                                        <input type="number" name="quantity" value="2" min="1">
+                                                        <input type="number" name="quantity" value="1" min="1">
                                                         <input type="hidden" name="id" value="{{ $product->id }}">
                                                         <input type="hidden" name="name" value="{{ $product->name }}">
                                                         <input type="hidden" name="price" value="{{ $product->special_price == '' ? $product->regular_price : $product->special_price}}">

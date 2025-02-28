@@ -37,9 +37,14 @@
                     @foreach ($items as $item)
                         <div class="single-cart-area-list main  item-parent">
                             <div class="product-main-cart">
-                                <div class="close section-activation">
-                                    <i class="fa-regular fa-x"></i>
-                                </div>
+                                <form action="{{ route('cart.remove',['rowId'=>$item->rowId]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <div class="close section-activation">
+                                        <button type="submit"><i class="fa-regular fa-x"></i></button>
+                                    </div>
+                                </form>
+                               
                                 <div class="thumbnail">
                                     <img src="{{ asset($item->image) }}" alt="shop">
                                 </div>
@@ -79,7 +84,12 @@
                             <input type="text" placeholder="Cupon Code">
                             <button class="rts-btn btn-primary">Apply Coupon</button>
                         </form>
-                        <a href="#" class="rts-btn btn-primary mr--50">Clear All</a>
+                        <form action="{{ route('cart.destroy') }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="rts-btn btn-primary mr--50">Clear All</button>
+                        </form>
+                        
                     </div>
 
                 </div>
@@ -145,7 +155,7 @@
             </div>
             @else
             <p>No item found in your cart</p>
-            <a href="" class="btn btn-sm btn-success">Shop Now</a>
+            <a href="{{ url('/') }}" class="btn btn-sm btn-success">Shop Now</a>
             @endif
         </div>
     </div>
@@ -156,7 +166,8 @@
 @section('scripts')
 
   <script>
-    $(".cart_qty_decrease").on("click",function(){
+    $(".cart_qty_decrease").on("click",function(e){
+        e.preventDefault();
         $(this).closest('form').submit();
     });
 
