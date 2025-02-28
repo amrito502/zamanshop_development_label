@@ -55,8 +55,15 @@
                                 <div class="quantity-edit">
                                     <input type="text" class="input" name="quantity" value="{{ $item->qty }}">
                                     <div class="button-wrapper-action">
-                                        <button class="button"><i class="fa-regular fa-chevron-down"></i></button>
-                                        <button class="button plus">+<i class="fa-regular fa-chevron-up"></i></button>
+                                        <form action="{{ route('cart.decrease',['rowId'=>$item->rowId]) }}" method="POST">
+                                            @csrf
+                                            <button class="button"><i class="fa-regular fa-chevron-down"></i></button>
+                                        </form>
+                                        
+                                        <form action="{{ route('cart.increase',['rowId'=>$item->rowId]) }}" method="POST">
+                                            @csrf
+                                            <button class="button plus">+<i class="fa-regular fa-chevron-up"></i></button>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

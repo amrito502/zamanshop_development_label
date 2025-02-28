@@ -82,4 +82,7 @@ Route::get('/', [CustomerController::class,'index'])->name('index');
 Route::get('/cart', [CartController::class,'index'])->name('cart.index');
 Route::post('/cart/add', [CartController::class,'add_to_cart'])->name('cart.add');
 
+
+Route::post('/cart/increase/{rowId}', [CartController::class,'increase_cart_quantity'])->name('cart.increase');
+Route::post('/cart/decrease/{rowId}', [CartController::class,'decrease_cart_quantity'])->name('cart.decrease');
 //===========without-login-route-end====================//
