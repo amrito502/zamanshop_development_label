@@ -10,6 +10,7 @@ use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
 use App\Http\Controllers\ProductController;
@@ -77,5 +78,8 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
 
 //===========without-login-route-start====================//
 Route::get('/', [CustomerController::class,'index'])->name('index');
+
+Route::get('/cart', [CartController::class,'index'])->name('cart.index');
+Route::post('/cart/add', [CartController::class,'add_to_cart'])->name('cart.add');
 
 //===========without-login-route-end====================//

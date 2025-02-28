@@ -21,7 +21,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $data['products'] = Product::with(['section','user','admin','seller','customer', 'district', 'subDistrict', 'category', 'subCategory', 'brand'])->get();
+        $data['products'] = Product::with(['section', 'user', 'admin', 'seller', 'customer', 'district', 'subDistrict', 'category', 'subCategory', 'brand'])->get();
         return view('partials.components.product.index', $data);
     }
 
@@ -29,17 +29,17 @@ class ProductController extends Controller
      * Show the form for creating a new resource.
      */
 
-     public function getSubDistricts(Request $request)
-     {
-         $subDistricts = SubDistrict::where('district_id', $request->district_id)->get();
-         return response()->json($subDistricts);
-     }
- 
-     public function getSubCategories(Request $request)
-     {
-         $subCategories = SubCategory::where('category_id', $request->category_id)->get();
-         return response()->json($subCategories);
-     }
+    public function getSubDistricts(Request $request)
+    {
+        $subDistricts = SubDistrict::where('district_id', $request->district_id)->get();
+        return response()->json($subDistricts);
+    }
+
+    public function getSubCategories(Request $request)
+    {
+        $subCategories = SubCategory::where('category_id', $request->category_id)->get();
+        return response()->json($subCategories);
+    }
     public function create()
     {
         $data['sections']  = Section::all();
@@ -78,9 +78,9 @@ class ProductController extends Controller
 
         $products = new Product();
         $products->name = $request->name;
-        $products->size = json_encode($request->size ?? []); 
+        $products->size = json_encode($request->size ?? []);
         $products->color = json_encode($request->color ?? []);
-        
+
         $products->slug = $slug;
         $products->sku = $sku;
 
@@ -134,6 +134,37 @@ class ProductController extends Controller
             $image->move($imagePath, $imageName);
             $products->main_image = 'uploads/products/' . $imageName;
         }
+
+        // Handle the image upload
+        if ($request->hasFile('product_gallery')) {
+            $imagePaths = []; // Store the image paths
+
+            // Loop through each uploaded image
+            foreach ($request->file('product_gallery') as $image) {
+                // Generate a unique name for each image
+                $imageName = time() . '_' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+                // Define the folder path
+                $imagePath = public_path('uploads/product_gallery');
+
+                // Create directory if it doesn't exist
+                if (!File::exists($imagePath)) {
+                    File::makeDirectory($imagePath, 0755, true);
+                }
+
+                // Move the image to the 'product_gallery' folder
+                $image->move($imagePath, $imageName);
+
+                // Add the relative image path to the array
+                $imagePaths[] = 'uploads/product_gallery/' . $imageName;
+            }
+
+            // Convert the image paths to JSON format for storage in the database
+            $productGallery = json_encode($imagePaths);
+        }
+
+
+        $products->product_gallery = $productGallery;
         $products->save();
 
         return redirect()->route('products.index')->with('success', 'Product created successfully.');

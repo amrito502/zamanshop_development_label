@@ -28,7 +28,7 @@ return new class extends Migration
             $table->text('return_policy')->nullable();
             $table->string('tag_title')->nullable();
             $table->string('main_image', 255)->nullable();
-            $table->string('product_gallery', 255)->nullable();
+            $table->text('product_gallery')->nullable();
             $table->text('video')->nullable();
             $table->boolean('is_featured')->default(false);
             $table->integer('stock_quantity')->default(0); // Available stock

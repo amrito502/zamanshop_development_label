@@ -51,11 +51,13 @@ class Product extends Model
         'category_id',
         'sub_category_id',
         'brand_id',
+        'product_gallery'
     ];
 
     protected $casts = [
         'size' => 'json',
         'color' => 'json',
+        'product_gallery' => 'json',
     ];
 
 

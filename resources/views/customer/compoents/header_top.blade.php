@@ -68,7 +68,7 @@
                                                 <i class="fa-light fa-user"></i>
                                                 Account
                                             </a>
-                                            <a href="wishlist.html" class="btn-border-only wishlist">
+                                            <a href="{{ url('cart') }}" class="btn-border-only wishlist">
                                                 <i class="fa-regular fa-heart"></i>
                                                 Wishlist
                                                 <span class="number">2</span>
@@ -76,7 +76,9 @@
                                             <div class="btn-border-only cart category-hover-header">
                                                 <i class="fa-sharp fa-regular fa-cart-shopping"></i>
                                                 <span class="text">My Cart</span>
-                                                <span class="number">2</span>
+                                                @if (Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->content()->count() > 0)
+                                                    <span class="number">{{ Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->content()->count() }}</span>
+                                                @endif
                                                 <div class="category-sub-menu card-number-show">
                                                     <h5 class="shopping-cart-number">Shopping Cart (03)</h5>
                                                     <div class="cart-item-1 border-top">
@@ -150,12 +152,12 @@
                                                             <p>Spend More <span>$125.00</span> to reach <span>Free Shipping</span></p>
                                                         </div>
                                                         <div class="button-wrapper d-flex align-items-center justify-content-between">
-                                                            <a href="cart.html" class="rts-btn btn-primary ">View Cart</a>
+                                                            <a href="{{ url('cart') }}" class="rts-btn btn-primary ">View Cart</a>
                                                             <a href="checkout.html" class="rts-btn btn-primary border-only">CheckOut</a>
                                                         </div>
                                                     </div>
                                                 </div>
-                                                <a href="cart.html" class="over_link"></a>
+                                                <a href="{{ url('cart') }}" class="over_link"></a>
                                             </div>
                                         </div>
                                     </div>

@@ -74,6 +74,20 @@
                             <span class="text-muted">No Color</span>
                         @endif
                     </td>
+
+                    <td>
+                        @if (!empty($product->product_gallery))
+                            @php
+                                $images = json_decode($product->product_gallery, true); // Decode the JSON string to get an array
+                            @endphp
+
+                            @foreach ($images as $image)
+                                <div class="product-gallery">
+                                    <img src="{{ asset($image) }}" alt="Product Image" class="img-fluid">
+                                </div>
+                            @endforeach
+                        @endif
+                    </td>
             
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->additional_info }}</td>
