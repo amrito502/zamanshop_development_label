@@ -66,17 +66,19 @@
                                 <p>TK {{ $item->subtotal }}</p>
                             </div>
                             <div class="button-area">
-                                <a href="#" class="rts-btn btn-primary radious-sm with-icon">
-                                    <div class="btn-text">
-                                        Add To Cart
-                                    </div>
-                                    <div class="arrow-icon">
-                                        <i class="fa-regular fa-cart-shopping"></i>
-                                    </div>
-                                    <div class="arrow-icon">
-                                        <i class="fa-regular fa-cart-shopping"></i>
-                                    </div>
-                                </a>
+                                <form action="{{ route('wishlist.move_to_cart',['rowId'=>$item->rowId]) }}" method="POST">
+                                    @csrf
+                                    <button class="rts-btn btn-primary radious-sm with-icon" type="submit">
+                                        <div class="btn-text">
+                                            Move To Cart
+                                        </div>
+                                        <div class="arrow-icon">
+                                            <i class="fa-regular fa-cart-shopping"></i>
+                                        </div>
+                                        <div class="arrow-icon">
+                                            <i class="fa-regular fa-cart-shopping"></i>
+                                        </div>
+                                </form>
                             </div>
                         </div>
                         @endforeach

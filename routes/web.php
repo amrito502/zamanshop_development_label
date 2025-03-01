@@ -93,4 +93,5 @@ Route::get('/wishlist', [WishlistController::class,'index'])->name('wishlist.ind
 Route::post('/wishlist/add', [WishlistController::class,'add_to_wishlist'])->name('wishlist.add');
 Route::delete('/wishlist/remove/{rowId}', [WishlistController::class,'remove_wishlist_item'])->name('wishlist.remove');
 Route::delete('/wishlist/destroy', [WishlistController::class,'destroy_wishlist'])->name('wishlist.destroy');
+Route::post('/wishlist/move-to-cart/{rowId}', [WishlistController::class,'move_to_cart'])->name('wishlist.move_to_cart');
 //===========without-login-route-end====================//
