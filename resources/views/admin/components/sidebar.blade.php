@@ -214,7 +214,7 @@
                             </a>
                             <ul class="sa-nav__menu sa-nav__menu--sub" data-sa-collapse-content="">
                                 <li class="sa-nav__menu-item">
-                                    <a href="app-coupons-list.html" class="sa-nav__link">
+                                    <a href="{{ route('coupons.index') }}" class="sa-nav__link">
                                         <span class="sa-nav__menu-item-padding"></span>
                                         <span class="sa-nav__title">Coupons List</span>
                                     </a>

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\CouponController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CategoryController;
@@ -70,6 +71,9 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
         Route::resource('products', ProductController::class);
         Route::get('/get-subdistricts', [ProductController::class, 'getSubDistricts'])->name('get.subdistricts');
         Route::get('/get-subcategories', [ProductController::class, 'getSubCategories'])->name('get.subcategories');
+
+        // =========Coupon-routes=====
+        Route::resource('coupons', CouponController::class);
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -94,4 +98,7 @@ Route::post('/wishlist/add', [WishlistController::class,'add_to_wishlist'])->nam
 Route::delete('/wishlist/remove/{rowId}', [WishlistController::class,'remove_wishlist_item'])->name('wishlist.remove');
 Route::delete('/wishlist/destroy', [WishlistController::class,'destroy_wishlist'])->name('wishlist.destroy');
 Route::post('/wishlist/move-to-cart/{rowId}', [WishlistController::class,'move_to_cart'])->name('wishlist.move_to_cart');
+
+Route::post('/apply-coupon-code', [CartController::class,'apply_coupon_code'])->name('apply.coupon.code');
+Route::delete('/remove-coupon-code', [CartController::class,'remove_coupon_code'])->name('remove.coupon.code');
 //===========without-login-route-end====================//
