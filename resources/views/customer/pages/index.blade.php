@@ -2,7 +2,12 @@
 @section('customer')
     @include('customer.compoents.home.banner')
     @include('customer.compoents.home.category_area')
-
+<style>
+    .cus_heart_exists{
+        color: #f90ed1!important;
+        animation: 0.5s mymove;
+    }
+</style>
     <div class="shop-grid-sidebar-area rts-section-gap">
         <div class="container">
             <div class="row g-0">
@@ -25,9 +30,25 @@
                                                     <img src="{{ asset($product->main_image) }}" alt="grocery">
                                                 </a>
                                                 <div class="action-share-option">
-                                                    <div class="single-action openuptip message-show-action" data-flow="up" title="Add To Wishlist">
-                                                        <i class="fa-light fa-heart"></i>
-                                                    </div>
+                                                 @if (Surfsidemedia\Shoppingcart\Facades\Cart::instance('wishlist')->content()->where('id', $product->id)->count() > 0)
+                                                   
+                                                    <a style="color: red; background-color: green;" href="{{ route('wishlist.index') }}" class="single-action openuptip message-show-action cus_heart_exists" ><i style="color: red!important;" class="fa-light fa-heart"></i></a>
+
+                                                  
+
+                                                 @else
+                                                    <form action="{{ route('wishlist.add') }}" method="POST">
+                                                        @csrf
+                                                        <input type="hidden" name="id" value="{{ $product->id }}">
+                                                        <input type="hidden" name="name" value="{{ $product->name }}">
+                                                        <input type="hidden" name="price" value="{{ $product->special_price == '' ? $product->regular_price : $product->special_price}}">
+                                                        <input type="hidden" name="quantity" value="1" min="1">
+                                                        <button type="submit" class="single-action openuptip message-show-action" data-flow="up" title="Add To Wishlist">
+                                                            <i class="fa-light fa-heart"></i>
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                                  
                                                     <div class="single-action openuptip" data-flow="up" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <i class="fa-solid fa-arrows-retweet"></i>
                                                     </div>

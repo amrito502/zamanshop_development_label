@@ -1,19 +1,20 @@
 <?php
 
-use App\Http\Controllers\SectionController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Admin\AdminController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\Customer\CustomerController;
 use App\Http\Controllers\Admin\AdminDashboardController;
-use App\Http\Controllers\CartController;
 use App\Http\Controllers\Seller\SellerDashboardController;
 use App\Http\Controllers\Customer\CustomerDashboardController;
-use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,4 +88,9 @@ Route::post('/cart/increase/{rowId}', [CartController::class,'increase_cart_quan
 Route::post('/cart/decrease/{rowId}', [CartController::class,'decrease_cart_quantity'])->name('cart.decrease');
 Route::delete('/cart/remove/{rowId}', [CartController::class,'remove_cart_item'])->name('cart.remove');
 Route::delete('/cart/destroy', [CartController::class,'destroy_cart'])->name('cart.destroy');
+
+Route::get('/wishlist', [WishlistController::class,'index'])->name('wishlist.index');
+Route::post('/wishlist/add', [WishlistController::class,'add_to_wishlist'])->name('wishlist.add');
+Route::delete('/wishlist/remove/{rowId}', [WishlistController::class,'remove_wishlist_item'])->name('wishlist.remove');
+Route::delete('/wishlist/destroy', [WishlistController::class,'destroy_wishlist'])->name('wishlist.destroy');
 //===========without-login-route-end====================//
