@@ -257,8 +257,8 @@
                     <img src="{{ url('') }}/images/customers/customer-4-64x64.jpg" width="64" height="64" alt="" />
                 </span>
                 <span class="sa-toolbar-user__info">
-                    <span class="sa-toolbar-user__title">Konstantin Veselovsky</span>
-                    <span class="sa-toolbar-user__subtitle">stroyka@example.com</span>
+                    <span class="sa-toolbar-user__title">{{ auth()->user()->name }}</span>
+                    <span class="sa-toolbar-user__subtitle">{{ auth()->user()->phone }}</span>
                 </span>
             </button>
             <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton">

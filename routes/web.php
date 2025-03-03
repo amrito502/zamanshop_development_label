@@ -10,6 +10,7 @@ use App\Http\Controllers\SectionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\WishlistController;
 use App\Http\Controllers\Admin\AdminController;
+use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\SubCategoryController;
 use App\Http\Controllers\SellerRequestController;
 use App\Http\Controllers\Customer\CustomerController;
@@ -73,7 +74,8 @@ Route::middleware(['auth', 'ensurePhoneVerified'])->group(function () {
         Route::get('/get-subcategories', [ProductController::class, 'getSubCategories'])->name('get.subcategories');
 
         // =========Coupon-routes=====
-        Route::resource('coupons', CouponController::class);
+        Route::resource('coupons', CouponController::class); 
+        Route::resource('orders', OrderController::class);
     });
 
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
@@ -101,4 +103,8 @@ Route::post('/wishlist/move-to-cart/{rowId}', [WishlistController::class,'move_t
 
 Route::post('/apply-coupon-code', [CartController::class,'apply_coupon_code'])->name('apply.coupon.code');
 Route::delete('/remove-coupon-code', [CartController::class,'remove_coupon_code'])->name('remove.coupon.code');
+
+Route::get('/checkout', [CartController::class,'checkout'])->name('checkout');
+Route::post('/checkout', [CartController::class,'place_an_order'])->name('store.checkout');
+Route::get('/order/success', [CartController::class,'order_confirmation'])->name('order.success');
 //===========without-login-route-end====================//

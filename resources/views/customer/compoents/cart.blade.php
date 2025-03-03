@@ -23,7 +23,7 @@
                         <div class="rts-cart-list-area">
                             <div class="single-cart-area-list head">
                                 <div class="product-main">
-                                    <P>Name</P>
+                                    <P>Product Name/Title</P>
                                 </div>
                                 <div class="price">
                                     <p>Price</p>
@@ -46,9 +46,6 @@
                                             </div>
                                         </form>
 
-                                        <div class="thumbnail">
-                                            <img src="{{ asset($item->image) }}" alt="shop">
-                                        </div>
                                         <div class="information">
                                             <h6 class="title">{{ $item->name }}</h6>
                                             <span>{{ $item->sku }}</span>
@@ -166,7 +163,7 @@
                                             {{ Session::get('discounts')['total'] }}
                                     </div>
                                     <div class="button-area">
-                                        <button class="rts-btn btn-primary">Proceed To Checkout</button>
+                                        <a href="{{ route('checkout') }}" class="rts-btn btn-primary">Proceed To Checkout</a>
                                     </div>
                                 </div>
                             </div>
@@ -201,7 +198,7 @@
                                             {{ Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->total() }}</h6>
                                     </div>
                                     <div class="button-area">
-                                        <button class="rts-btn btn-primary">Proceed To Checkout</button>
+                                        <a href="{{ route('checkout') }}" class="rts-btn btn-primary">Proceed To Checkout</a>
                                     </div>
                                 </div>
                             </div>

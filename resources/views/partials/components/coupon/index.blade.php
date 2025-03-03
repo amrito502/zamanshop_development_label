@@ -11,7 +11,7 @@
                     Coupon</a></div>
             </div>
         </div>
-        @include('partials.message')
+       
         <div class="card">
             <div class="p-4">
                 <input type="text" placeholder="Start typing to search for categories"

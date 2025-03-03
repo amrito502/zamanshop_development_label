@@ -36,7 +36,7 @@
                                 <div class="col-lg-12">
                                     <div class="logo-search-category-wrapper style-five-call-us">
                                         <a href="index.html" class="logo-area">
-                                            <img src="assets/images/logo/logo-01.svg" alt="logo-main" class="logo">
+                                            <img src="{{ asset('assets/images/zamanshops.png') }}" alt="logo-main" class="logo">
                                         </a>
                                         <div class="category-search-wrapper style-five">
                                             <div class="location-area">
@@ -46,7 +46,7 @@
                                                 <div class="information">
                                                     <span>Hotline Number</span>
                                                     <a href="#">
-                                                        <p>+259 2158 2316</p>
+                                                        <p>+880 1751-957700</p>
                                                     </a>
                                                 </div>
                                             </div>
@@ -79,7 +79,7 @@
                                                     <span
                                                         class="number">{{ Surfsidemedia\Shoppingcart\Facades\Cart::instance('wishlist')->content()->count() }}</span>
                                                 @endif
-                                                
+
                                             </a>
                                             <div class="btn-border-only cart category-hover-header">
                                                 <i class="fa-sharp fa-regular fa-cart-shopping"></i>
@@ -88,7 +88,7 @@
                                                     <span
                                                         class="number">{{ Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->content()->count() }}</span>
                                                 @endif
-                                                <div class="category-sub-menu card-number-show">
+                                                {{-- <div class="category-sub-menu card-number-show">
                                                     <h5 class="shopping-cart-number">Shopping Cart (03)</h5>
                                                     <div class="cart-item-1 border-top">
                                                         <div class="img-name">
@@ -175,7 +175,7 @@
                                                                 class="rts-btn btn-primary border-only">CheckOut</a>
                                                         </div>
                                                     </div>
-                                                </div>
+                                                </div> --}}
                                                 <a href="{{ url('cart') }}" class="over_link"></a>
                                             </div>
                                         </div>
@@ -201,103 +201,26 @@
                                     <li>
                                         <a href="#" class="menu-item">
                                             <img src="assets/images/icons/01.svg" alt="icons">
-                                            <span>Breakfast &amp; Dairy</span>
+                                            <span>Locations</span>
                                             <i class="fa-regular fa-plus"></i>
                                         </a>
                                         <ul class="submenu mm-collapse">
-                                            <li><a class="mobile-menu-link" href="#">Breakfast</a></li>
-                                            <li><a class="mobile-menu-link" href="#">Dinner</a></li>
-                                            <li><a class="mobile-menu-link" href="#"> Pumking</a></li>
+                                            <li><a class="mobile-menu-link" href="#">loc-1</a></li>
+                                            <li><a class="mobile-menu-link" href="#">loc-2</a></li>
+                                            <li><a class="mobile-menu-link" href="#"> loc-3</a></li>
                                         </ul>
                                     </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/02.svg" alt="icons">
-                                            <span>Meats &amp; Seafood</span>
-                                            <i class="fa-regular fa-plus"></i>
-                                        </a>
-                                        <ul class="submenu mm-collapse">
-                                            <li><a class="mobile-menu-link" href="#">Breakfast</a></li>
-                                            <li><a class="mobile-menu-link" href="#">Dinner</a></li>
-                                            <li><a class="mobile-menu-link" href="#"> Pumking</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/03.svg" alt="icons">
-                                            <span>Breads &amp; Bakery</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/04.svg" alt="icons">
-                                            <span>Chips &amp; Snacks</span>
-                                            <i class="fa-regular fa-plus"></i>
-                                        </a>
-                                        <ul class="submenu mm-collapse">
-                                            <li><a class="mobile-menu-link" href="#">Breakfast</a></li>
-                                            <li><a class="mobile-menu-link" href="#">Dinner</a></li>
-                                            <li><a class="mobile-menu-link" href="#"> Pumking</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/05.svg" alt="icons">
-                                            <span>Medical Healthcare</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/06.svg" alt="icons">
-                                            <span>Breads &amp; Bakery</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/07.svg" alt="icons">
-                                            <span>Biscuits &amp; Snacks</span>
-                                            <i class="fa-regular fa-plus"></i>
-                                        </a>
-                                        <ul class="submenu mm-collapse">
-                                            <li><a class="mobile-menu-link" href="#">Breakfast</a></li>
-                                            <li><a class="mobile-menu-link" href="#">Dinner</a></li>
-                                            <li><a class="mobile-menu-link" href="#"> Pumking</a></li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/08.svg" alt="icons">
-                                            <span>Frozen Foods</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/09.svg" alt="icons">
-                                            <span>Grocery &amp; Staples</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#" class="menu-item">
-                                            <img src="assets/images/icons/10.svg" alt="icons">
-                                            <span>Other Items</span>
-                                        </a>
-                                    </li>
+
                                 </ul>
                             </div>
                             <div class="nav-area">
                                 <nav>
                                     <ul class="parent-nav">
-                                        <li class="parent has-dropdown">
+                                        {{-- <li class="parent has-dropdown">
                                             <a class="nav-link" href="#">Home</a>
-                                            <ul class="submenu">
-                                                <li><a class="sub-b" href="index.html">Home One</a></li>
-                                                <li><a class="sub-b" href="index-two.html">Home Two</a></li>
-                                                <li><a class="sub-b" href="index-three.html">Home Three</a></li>
-                                                <li><a class="sub-b" href="index-four.html">Home Four</a></li>
-                                                <li><a class="sub-b" href="index-five.html">Home Five</a></li>
-                                            </ul>
-                                        </li>
-                                        <li class="parent"><a href="about.html">About</a></li>
+
+                                        </li> --}}
+                                        <li class="parent"><a href="{{ url('/') }}">Home</a></li>
                                         <li class="parent with-megamenu">
                                             <a href="#">Shop</a>
                                             <div class="rts-megamenu">
@@ -387,44 +310,26 @@
                                         </li>
                                         <li class="parent has-dropdown">
                                             <a class="nav-link" href="#">Vendors</a>
-                                            <ul class="submenu">
+                                            {{-- <ul class="submenu">
                                                 <li><a class="sub-b" href="vendor-list.html">Vendor List</a></li>
                                                 <li><a class="sub-b" href="vendor-grid.html">Vendor Grid</a></li>
                                                 <li><a class="sub-b" href="vendor-details.html">Vendor Details</a>
                                                 </li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
-                                        <li class="parent has-dropdown">
-                                            <a class="nav-link" href="#">Pages</a>
-                                            <ul class="submenu">
-                                                <li><a class="sub-b" href="about.html">About</a></li>
-                                                <li><a class="sub-b" href="store.html">Store</a></li>
-                                                <li><a class="sub-b" href="faq.html">Faq's</a></li>
-                                                <li><a class="sub-b" href="invoice.html">Invoice</a></li>
-                                                <li><a class="sub-b" href="contact.html">Contact</a></li>
-                                                <li><a class="sub-b" href="register.html">Register</a></li>
-                                                <li><a class="sub-b" href="login.html">Login</a></li>
-                                                <li><a class="sub-b" href="privacy-policy.html">Privacy Policy</a>
-                                                </li>
-                                                <li><a class="sub-b" href="cookies-policy.html">Cookies Policy</a>
-                                                </li>
-                                                <li><a class="sub-b" href="terms-condition.html">Terms &
-                                                        Condition</a></li>
-                                                <li><a class="sub-b" href="404.html">Error</a></li>
-                                            </ul>
-                                        </li>
+
                                         <li class="parent has-dropdown">
                                             <a class="nav-link" href="#">Blog</a>
-                                            <ul class="submenu">
+                                            {{-- <ul class="submenu">
                                                 <li><a class="sub-b" href="blog.html">Blog</a></li>
                                                 <li><a class="sub-b" href="blog-list-left-sidebar.html">Blog List
                                                         Right Sidebar</a></li>
                                                 <li><a class="sub-b" href="blog-list-right-sidebar.html">Blog List
                                                         Left Sidebar</a></li>
                                                 <li><a class="sub-b" href="blog-details.html">Blog Details</a></li>
-                                            </ul>
+                                            </ul> --}}
                                         </li>
-                                        <li class="parent"><a href="contact.html">Contact</a></li>
+                                        <li class="parent"><a href="#">Contact</a></li>
                                     </ul>
                                 </nav>
                             </div>

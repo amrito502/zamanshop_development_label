@@ -17,7 +17,7 @@
                             <div class="row g-4">
                                 @foreach (App\Models\Product::where('status','=','approved')->get() as $product)
                                     <div class="col-lg-20 col-lg-4 col-md-6 col-sm-12 col-12">
-                                        <div class="single-shopping-card-one">
+                                        <div class="single-shopping-card-one card" style="">
                                             <!-- iamge and sction area start -->
                                             <div class="image-and-action-area-wrapper">
                                                 <a href="shop-details.html" class="thumbnail-preview">
@@ -27,14 +27,14 @@
                                                         </span>
                                                         <i class="fa-solid fa-bookmark"></i>
                                                     </div>
-                                                    <img src="{{ asset($product->main_image) }}" alt="grocery">
+                                                    <img style="height: 250px!important;" src="{{ asset($product->main_image) }}" alt="grocery">
                                                 </a>
                                                 <div class="action-share-option">
                                                  @if (Surfsidemedia\Shoppingcart\Facades\Cart::instance('wishlist')->content()->where('id', $product->id)->count() > 0)
-                                                   
+
                                                     <a style="color: red; background-color: green;" href="{{ route('wishlist.index') }}" class="single-action openuptip message-show-action cus_heart_exists" ><i style="color: red!important;" class="fa-light fa-heart"></i></a>
 
-                                                  
+
 
                                                  @else
                                                     <form action="{{ route('wishlist.add') }}" method="POST">
@@ -48,33 +48,33 @@
                                                         </button>
                                                     </form>
                                                 @endif
-                                                  
-                                                    <div class="single-action openuptip" data-flow="up" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+                                                    {{-- <div class="single-action openuptip" data-flow="up" title="Compare" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                                         <i class="fa-solid fa-arrows-retweet"></i>
                                                     </div>
                                                     <div class="single-action openuptip cta-quickview product-details-popup-btn" data-flow="up" title="Quick View">
                                                         <i class="fa-regular fa-eye"></i>
-                                                    </div>
+                                                    </div> --}}
                                                 </div>
                                             </div>
                                             <!-- iamge and sction area start -->
 
                                             <div class="body-content">
 
-                                                <a href="shop-details.html">
+                                                <a href="">
                                                     <h4 class="title">{{ $product->name }}</h4>
                                                 </a>
                                                 <span class="availability">{{ $product->stock_quantity }}</span>
                                                 <div class="price-area">
                                                     <span class="current">{{ $product->special_price }}</span>
-                                                    <div class="previous">{{ $product->regular_price }}</div>quantity 
+                                                    <div class="previous">{{ $product->regular_price }}</div>quantity
                                                     <div class="">{{ $product->quantity }}</div>
                                                 </div>
-                                                @include('partials.message')
+                                               
                                                 <div class="cart-counter-action">
-                                                   
+
                                                     @if (Surfsidemedia\Shoppingcart\Facades\Cart::instance('cart')->content()->where('id', $product->id)->count() > 0)
-                                                    <a href="{{ route('cart.index') }}" class="btn btn-success my-4">Go to Cart</a>
+                                                    <a href="{{ route('cart.index') }}" class="rts-btn btn-primary">Go to Cart</a>
                                                     @else
                                                     <form action="{{ route('cart.add') }}" class="rts-btn btn-primary radious-sm with-icon" method="post">
                                                         @csrf
@@ -82,7 +82,7 @@
                                                         <input type="hidden" name="id" value="{{ $product->id }}">
                                                         <input type="hidden" name="name" value="{{ $product->name }}">
                                                         <input type="hidden" name="price" value="{{ $product->special_price == '' ? $product->regular_price : $product->special_price}}">
-                                                        <button type="submit" class="btn btn-success">Add To Cart<i class="fa-regular fa-cart-shopping"></i></button>
+                                                        <button type="submit" class="rts-btn btn-success">Add To Cart<i class="fa-regular fa-cart-shopping"></i></button>
                                                     </form>
                                                     @endif
 
@@ -299,7 +299,7 @@
         </div>
     </div>
 
-    <div class="weekly-best-selling-area rts-section-gap bg_light-1">
+    {{-- <div class="weekly-best-selling-area rts-section-gap bg_light-1">
         <div class="container">
             <div class="row">
                 <div class="col-lg-12">
@@ -3672,7 +3672,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> --}}
 
     <div class="rts-blog-area rts-section-gap">
         <div class="container">
